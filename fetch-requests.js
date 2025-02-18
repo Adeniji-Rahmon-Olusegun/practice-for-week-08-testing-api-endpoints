@@ -10,7 +10,11 @@ Paste your code for fetch requests here once you finish each task.
 */
 
 // Your code here
-
+(async function() {
+  let resObjs = await fetch("/posts");
+  let resBody = await resObjs.json();
+  console.log(resBody);
+})();
 
 
 /* =============================== Phase 2 ================================ */
@@ -18,5 +22,22 @@ Paste your code for fetch requests here once you finish each task.
   Make a request with fetch request to POST /posts and print the response
   components to the console.
 */
+const options = {
+  method: "POST",
+
+  body: JSON.stringify({
+    message: "New Post!!!"
+  }),
+
+  headers: {
+    "Content-Type": "application/json"
+  }
+};
+
+(async function() {
+  let resObj = await fetch("/posts", options);
+  let resBody = await resObj.json();
+  console.log(resBody);
+})()
 
 // Your code here
